@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<link
+			rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+			integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+			crossorigin="anonymous"
+		/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<div class="container">
+			<h1 class="mt-2">Url Shortener</h1>
+
+			<form action="/shortUrls" method="POST" class="my-4 form-inline">
+				<label for="fullUrl" class="sr-only">Url: </label>
+				<input
+					placeholder="Url"
+					required
+					class="form-control col mr-2"
+					type="url"
+					name="fullUrl"
+					id="fullUrl"
+				/>
+				<button type="submit" class="btn btn-primary">Shrink</button>
+			</form>
+
+			<table class="table table-striped">
+				<tr>
+					<th>Full Url</th>
+					<th>Short Url</th>
+					<th>Clicks</th>
+				</tr>
+
+				<tbody>
+					<% shortUrls.forEach(shortUrl => { %>
+					<tr>
+						<td>
+							<a href="<%= shortUrl.full %> "><%= shortUrl.full %></a>
+						</td>
+
+						<td>
+							<a href="<%= shortUrl.short %>"><%= shortUrl.short %></a>
+						</td>
+						<td><%= shortUrl.clicks %></td>
+					</tr>
+					<% }) %>
+
+					<tr>
+						<td>
+							<a href="https://www.youtube.com">https://www.youtube.com</a>
+						</td>
+
+						<td>
+							<a href="/123456">123456</a>
+						</td>
+						<td>10</td>
+					</tr>
+
+					<tr>
+						<td>
+							<a href="https://www.gmail.com">https://www.gmail.com</a>
+						</td>
+
+						<td>
+							<a href="/123456789">123456789</a>
+						</td>
+						<td>5</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</body>
+</html>
